@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integr
+        ity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <style>
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Tugas Modul 1</a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="mx-auto order-0">
+            <a class="navbar-brand mx-auto text-uppercase">Praktikum RPLBK 2021</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link">Kelompok 15</a>
+
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="container p-3 my-3 border">
+            <form>
+                <div class="form-group row">
+                    <label for="name" class="col-sm-2 col-form-label">Nama</label>
+                    <div class="col-sm-10">
+                        <input type="name" class="form-control" id="name" placeholder="Nama">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gridCheck1">
+                            <label class="form-check-label" for="gridCheck1">
+                                Example checkbox
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+            <button class="btn-primary " id="myBtn">Submit</button>
+        </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="dispName"></p>
+            <text id="secret" name="myname"></text>
+        </div>
+
+    </div>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // Get name
+        var name = document.getElementById("name").value;
+
+
+        // When the user clicks the button, open the modal 
+
+        btn.onclick = () => {
+            var user = document.getElementById("name").value;
+            modal.style.display = "block";
+            return user == "Zulham" ? secret() :
+                user == "Naufal" ? secret() :
+                    user == "" ? document.getElementById("dispName").innerHTML = "Mohon inputkan nama " :
+                        document.getElementById("dispName").innerHTML = "Kamu bukan owner program ini "
+
+            //Show the secret if user in owner
+            async function secret() {
+                document.getElementById("dispName").innerHTML = "Hiii " + user
+                let myPromise = new Promise(function (myResolve, myReject) {
+                    setTimeout(function () {
+                        myResolve("Here is your Secret");
+                    }, 3000);
+                    setTimeout(function () {
+                        // window.open("https://www.google.com");
+                        window.open("https://www.instagram.com/anyageraldine");
+                    }, 3500);
+                });
+                document.getElementById("secret").innerHTML = await myPromise;
+            }
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = () => {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = (event) => {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
